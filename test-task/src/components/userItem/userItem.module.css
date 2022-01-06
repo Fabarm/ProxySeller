@@ -1,0 +1,27 @@
+.user {
+    width: 1000px;
+    display: flex;
+    padding: 15px;
+    border: 2px solid teal;
+    margin: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+.btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+}
+.user__info{
+    text-align: left;
+}
+.myBtn {
+    padding: 5px 15px;
+    margin: 5px;
+    color: teal;
+    font-size: 20px;
+    background: transparent;
+    border: 1px solid teal;
+    cursor: pointer;
+}

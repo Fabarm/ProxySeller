@@ -3,6 +3,7 @@
 # dependencies
 /test-task/node_modules
 /.pnp
+.idea
 .pnp.js
 
 # testing
