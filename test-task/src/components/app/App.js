@@ -1,24 +1,24 @@
 import React, {useEffect} from "react";
 import './App.css';
 import UsersList from "../usersList/usersList";
-import MyModal from "../UI/modal/MyModal";
+import MyModal from "../modal/MyModal";
 import {useState} from "react";
 import Service from "../../services/servise";
 import UserAlbums from "../userAlbums/userAlbums";
 
 function App() {
-    const [users, setUsers] = useState([])
-    const [albums, setAlbums] = useState([])
-    const [id, setId] = useState('')
-    // const [posts, setPosts] = useState([])
-    const [modal, setModal] = useState(false)
+    const [users, setUsers] = useState([]);
+    const [albums, setAlbums] = useState([]);
+    const [id, setId] = useState('');
+    const [posts, setPosts] = useState([]);
+    const [modal, setModal] = useState(false);
 
    useEffect(()=>{
        fetchUsers()
    }, [])
 
     async function fetchUsers() {
-        const users = await Service.getUsers();
+        const users = await Service.getMe("/users");
         setUsers(users)
    }
 
@@ -27,19 +27,26 @@ function App() {
     }, [])
 
     async function fetchAlbums() {
-        const albums = await Service.getAlbums();
+        const albums = await Service.getMe("/albums");
         setAlbums(albums)
     }
 
+    useEffect(()=>{
+        fetchPosts()
+    }, [])
+
+    async function fetchPosts() {
+        const posts = await Service.getMe("/posts");
+        setPosts(posts)
+    }
+
    function onGetId(id) {
-       console.log(id)
        setId(id);
+       if(id){
+           setModal(true);
+       }
    }
 
-    function onGetVis(i) {
-        console.log(i)
-        setModal(i);
-    }
 
   return (
     <div className="App">
@@ -48,8 +55,7 @@ function App() {
         </MyModal>
         <UsersList
             users={users}
-            onGetId={id => onGetId(id)}
-            onGetVis={i => onGetVis(i)}/>
+            onGetId={id => onGetId(id)} />
     </div>
   );
 }

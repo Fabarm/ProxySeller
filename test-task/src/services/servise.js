@@ -1,12 +1,8 @@
 import axios from "axios";
 
 export default class Service {
-    static async getUsers() {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-        return response.data;
-    }
-    static async getAlbums() {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/albums');
+    static async getMe(str) {
+        const response = await axios.get('https://jsonplaceholder.typicode.com' + str);
         return response.data;
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./userItem.module.css"
 
-const UserItem = ({user, onGetId, onGetVis}) => {
+const UserItem = ({user, onGetId}) => {
 
     return (
         <li className={classes.user}>
