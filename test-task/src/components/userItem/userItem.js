@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./userItem.module.css"
 
-const UserItem = ({user, onGetId}) => {
+const UserItem = ({user, onGetId, onGetVis}) => {
 
     return (
         <li className={classes.user}>
@@ -18,7 +18,8 @@ const UserItem = ({user, onGetId}) => {
                     >Show user posts</button>
                 <button
                     className={classes.myBtn}
-                    onClick={onGetId}>Show user albums</button>
+                    onClick={onGetId}
+                    >Show user albums</button>
             </div>
         </li>
     );

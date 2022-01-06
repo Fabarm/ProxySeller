@@ -36,6 +36,11 @@ function App() {
        setId(id);
    }
 
+    function onGetVis(i) {
+        console.log(i)
+        setModal(i);
+    }
+
   return (
     <div className="App">
         <MyModal visible={modal} setVisible={setModal}>
@@ -43,7 +48,8 @@ function App() {
         </MyModal>
         <UsersList
             users={users}
-            onGetId={id => onGetId(id)}/>
+            onGetId={id => onGetId(id)}
+            onGetVis={i => onGetVis(i)}/>
     </div>
   );
 }
