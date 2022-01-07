@@ -1,0 +1,9 @@
+.post {
+    width: 1000px;
+    display: flex;
+    padding: 15px;
+    border: 2px solid teal;
+    margin: 15px;
+    flex-direction: column;
+    text-align: left;
+}

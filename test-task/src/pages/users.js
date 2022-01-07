@@ -4,13 +4,15 @@ import UsersList from "../components/usersList/usersList";
 import MyModal from "../components/modal/MyModal";
 import Service from "../services/servise";
 import UserAlbums from "../components/userAlbums/userAlbums";
+import {useNavigate} from "react-router-dom";
 
-function Users() {
+const Users = ({callback}) => {
     const [users, setUsers] = useState([]);
     const [albums, setAlbums] = useState([]);
-    const [id, setId] = useState('');
+    const [idAl, setIdAl] = useState('');
     const [posts, setPosts] = useState([]);
     const [modal, setModal] = useState(false);
+    let navigate = useNavigate();
 
    useEffect(()=>{
        fetchUsers()
@@ -40,21 +42,28 @@ function Users() {
     }
 
    function onGetId(id) {
-       setId(id);
+       setIdAl(id);
        if(id){
            setModal(true);
        }
    }
 
+    function onGet(id) {
+        if(id){
+            callback(id, posts)
+            navigate('posts');
+        }
+    }
 
   return (
     <div className="App">
         <MyModal visible={modal} setVisible={setModal}>
-            <UserAlbums albums={albums} albumsId={id}/>
+            <UserAlbums albums={albums} albumsId={idAl}/>
         </MyModal>
         <UsersList
             users={users}
-            onGetId={id => onGetId(id)} />
+            onGetId={id => onGetId(id)}
+            onGet={(id) => onGet(id)} />
     </div>
   );
 }

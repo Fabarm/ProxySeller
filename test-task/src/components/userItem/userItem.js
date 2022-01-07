@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./userItem.module.css"
 
-const UserItem = ({user, onGetId}) => {
+const UserItem = ({user, onGetId, onGet}) => {
 
     return (
         <li className={classes.user}>
@@ -15,7 +15,7 @@ const UserItem = ({user, onGetId}) => {
             <div className={classes.btns} >
                 <button
                     className={classes.myBtn}
-                    >Show user posts</button>
+                    onClick={onGet}>Show user posts</button>
                 <button
                     className={classes.myBtn}
                     onClick={onGetId}
